@@ -41,12 +41,7 @@ app.get('/services', (req, res) => {
 
 app.get('/contact', (req, res) => {
   const selectedService = req.query.service || '';
-  res.render('pages/contact', {
-    page: 'contact',
-    success: null,
-    error: null,
-    selectedService,
-  });
+  res.render('pages/contact', { page: 'contact', success: null, error: null, selectedService });
 });
 
 app.post('/contact', async (req, res) => {
@@ -58,6 +53,7 @@ app.post('/contact', async (req, res) => {
         page: 'contact',
         success: null,
         error: 'Please fill in name, email and phone.',
+        selectedService: serviceSelect || service || '',
       });
     }
 
@@ -76,6 +72,7 @@ app.post('/contact', async (req, res) => {
       page: 'contact',
       success: 'Thank you! Your enquiry has been received.',
       error: null,
+      selectedService: '',
     });
   } catch (err) {
     console.error('Error saving inquiry:', err.message);
@@ -83,6 +80,7 @@ app.post('/contact', async (req, res) => {
       page: 'contact',
       success: null,
       error: 'Something went wrong. Please try again.',
+      selectedService: serviceSelect || service || '',
     });
   }
 });

@@ -54,6 +54,27 @@ a {
   padding: 16px 0;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(233, 184, 114, 0.6);
+  object-fit: contain;
+  background: #000;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
 .logo-main {
   display: block;
   font-weight: 600;
@@ -264,6 +285,81 @@ a {
 
 .cta-strip {
   margin-top: 44px;
+}
+
+.projects-gallery {
+  margin-top: 46px;
+  padding: 22px 22px 26px;
+  border-radius: 26px;
+  background: rgba(15, 16, 24, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.projects-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.projects-grid.images {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.projects-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin: 4px -4px 0;
+  padding-left: 4px;
+  scroll-snap-type: x mandatory;
+}
+
+.projects-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.projects-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+}
+
+.project-image-card {
+  position: relative;
+  border-radius: 20px;
+  flex: 0 0 calc(50% - 12px); /* show ~2 cards in viewport */
+  padding-bottom: calc(50% - 12px); /* square */
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+}
+
+.project-image-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(5, 5, 9, 0.2) 40%, rgba(5, 5, 9, 0.85) 100%);
+}
+
+.project-image-card figcaption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  font-size: 0.92rem;
+  color: #fff;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 .cta-inner {
@@ -489,6 +585,7 @@ textarea:focus {
     flex-direction: column;
     align-items: flex-start;
   }
+
 }
 
 

@@ -41,10 +41,18 @@
         <label for="serviceSelect">Service interested in</label>
         <select id="serviceSelect" name="serviceSelect">
           <option value="">Select a service</option>
-          <option value="Interior Design">Interior Design</option>
-          <option value="Home Architecture">Home Architecture</option>
-          <option value="Home Plan">Home Plan</option>
-          <option value="Not sure yet">Not sure yet</option>
+          <option value="Interior Design" <%= selectedService === 'Interior Design' ? 'selected' : '' %>>
+            Interior Design
+          </option>
+          <option value="Home Architecture" <%= selectedService === 'Home Architecture' ? 'selected' : '' %>>
+            Home Architecture
+          </option>
+          <option value="Home Plan" <%= selectedService === 'Home Plan' ? 'selected' : '' %>>
+            Home Plan
+          </option>
+          <option value="Not sure yet" <%= selectedService === 'Not sure yet' ? 'selected' : '' %>>
+            Not sure yet
+          </option>
         </select>
       </div>
 
@@ -60,9 +68,9 @@
 
   <aside class="contact-info">
     <h2>Contact details</h2>
-    <p><strong>Email:</strong> <a href="mailto:hello@example.com">hello@example.com</a></p>
-    <p><strong>Phone:</strong> <a href="tel:+910000000000">+91 00000 00000</a></p>
-    <p class="small">Replace these with your real contact details.</p>
+    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/interior_with_pratima_gaikwad" target="_blank" rel="noreferrer">@interior_with_pratima_gaikwad</a></p>
+    <p><strong>Phone / WhatsApp:</strong> <a href="tel:+919552185151">+91 95521 85151</a></p>
+    <p><strong>Location:</strong> Pune, Maharashtra 411048</p>
 
     <h3>Typical projects</h3>
     <ul>
