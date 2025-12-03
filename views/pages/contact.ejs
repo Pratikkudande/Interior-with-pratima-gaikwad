@@ -1,0 +1,80 @@
+<%- include('../partials/header', { pageTitle: 'Contact' }) %>
+
+<section class="page-header">
+  <h1>Book a consultation</h1>
+  <p>Share a few details about your home or project and we’ll get back to you.</p>
+</section>
+
+<section class="contact-layout">
+  <div class="contact-form-wrapper">
+    <% if (success) { %>
+      <div class="alert success"><%= success %></div>
+    <% } %>
+    <% if (error) { %>
+      <div class="alert error"><%= error %></div>
+    <% } %>
+    <form action="/contact" method="post" class="contact-form" id="contactForm">
+      <input type="hidden" name="service" id="serviceField" value="<%= typeof selectedService !== 'undefined' ? selectedService : '' %>" />
+
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name" />
+      </div>
+
+      <div class="field-group">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="phone">Phone / WhatsApp</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+91 ..." />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="Your city" />
+      </div>
+
+      <div class="field">
+        <label for="serviceSelect">Service interested in</label>
+        <select id="serviceSelect" name="serviceSelect">
+          <option value="">Select a service</option>
+          <option value="Interior Design">Interior Design</option>
+          <option value="Home Architecture">Home Architecture</option>
+          <option value="Home Plan">Home Plan</option>
+          <option value="Not sure yet">Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Project details</label>
+        <textarea id="message" name="message" rows="4" placeholder="Type, size of space, timeline, budget range..."></textarea>
+      </div>
+
+      <button type="submit" class="btn primary full-width">Submit Enquiry</button>
+      <p class="form-note">We usually respond within one working day.</p>
+    </form>
+  </div>
+
+  <aside class="contact-info">
+    <h2>Contact details</h2>
+    <p><strong>Email:</strong> <a href="mailto:hello@example.com">hello@example.com</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+910000000000">+91 00000 00000</a></p>
+    <p class="small">Replace these with your real contact details.</p>
+
+    <h3>Typical projects</h3>
+    <ul>
+      <li>2/3 BHK apartment interiors</li>
+      <li>Villa & bungalow design</li>
+      <li>Renovation & re-planning</li>
+      <li>Commercial boutique offices</li>
+    </ul>
+  </aside>
+</section>
+
+<%- include('../partials/footer') %>
+
+
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= siteTitle %> | <%= pageTitle || '' %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-main">Interior</span>
+          <span class="logo-sub">with Pratima Gaikwad</span>
+        </div>
+        <nav class="nav">
+          <a href="/" class="<%= page === 'home' ? 'active' : '' %>">Home</a>
+          <a href="/services" class="<%= page === 'services' ? 'active' : '' %>">Services</a>
+          <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main class="site-main">
+      <div class="container">
+
+
+
