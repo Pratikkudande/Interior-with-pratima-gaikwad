@@ -12,10 +12,11 @@ const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/interior_wi
 mongoose
   .connect(mongoUri)
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log('✓ Connected to MongoDB');
   })
   .catch((err) => {
-    console.error('MongoDB connection error:', err.message);
+    console.error('✗ MongoDB connection error:', err.message);
+    console.error('Full error:', err);
   });
 
 // View engine setup
@@ -45,9 +46,23 @@ app.get('/contact', (req, res) => {
 });
 
 app.post('/contact', async (req, res) => {
+  console.log('POST /contact received');
+  console.log('Request body:', req.body);
+  
   const { name, email, phone, city, service, serviceSelect, message } = req.body;
 
   try {
+    // Check if MongoDB is connected
+    if (mongoose.connection.readyState !== 1) {
+      console.error('MongoDB not connected. State:', mongoose.connection.readyState);
+      return res.render('pages/contact', {
+        page: 'contact',
+        success: null,
+        error: 'Database connection issue. Please try again in a moment.',
+        selectedService: serviceSelect || service || '',
+      });
+    }
+
     if (!name || !email || !phone) {
       return res.render('pages/contact', {
         page: 'contact',
@@ -59,34 +74,48 @@ app.post('/contact', async (req, res) => {
 
     const finalService = service || serviceSelect || 'Not specified';
 
-    await Inquiry.create({
-      name,
-      email,
-      phone,
-      city,
+    const inquiry = await Inquiry.create({
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      city: city ? city.trim() : '',
       service: finalService,
-      message,
+      message: message ? message.trim() : '',
     });
 
+    console.log('✓ Inquiry saved successfully:', inquiry._id);
     res.render('pages/contact', {
       page: 'contact',
-      success: 'Thank you! Your enquiry has been received.',
+      success: 'Thank you! Your enquiry has been received. We will get back to you soon.',
       error: null,
       selectedService: '',
     });
   } catch (err) {
-    console.error('Error saving inquiry:', err.message);
+    console.error('✗ Error saving inquiry:');
+    console.error('Error name:', err.name);
+    console.error('Error message:', err.message);
+    console.error('Full error:', err);
+    
+    // More specific error messages
+    let errorMsg = 'Something went wrong. Please try again.';
+    if (err.name === 'ValidationError') {
+      errorMsg = 'Please check your form fields and try again.';
+    } else if (err.name === 'MongoServerError') {
+      errorMsg = 'Database error. Please try again in a moment.';
+    }
+    
     res.render('pages/contact', {
       page: 'contact',
       success: null,
-      error: 'Something went wrong. Please try again.',
+      error: errorMsg,
       selectedService: serviceSelect || service || '',
     });
   }
 });
 
-// 404 handler
+// 404 handler (must be last)
 app.use((req, res) => {
+  console.log(`404 - Route not found: ${req.method} ${req.url}`);
   res.status(404).render('pages/404', { page: '404' });
 });
 
