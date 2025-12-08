@@ -10,12 +10,26 @@ const PORT = process.env.PORT || 3000;
 // Connect to MongoDB
 const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/interior_with_pratima';
 mongoose
-  .connect(mongoUri)
+  .connect(mongoUri, {
+    serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+  })
   .then(() => {
     console.log('✓ Connected to MongoDB');
   })
   .catch((err) => {
     console.error('✗ MongoDB connection error:', err.message);
+    
+    // Provide helpful guidance for common issues
+    if (err.message.includes('IP') || err.message.includes('whitelist')) {
+      console.error('\n⚠️  IP Whitelisting Issue Detected!');
+      console.error('To fix this:');
+      console.error('1. Go to MongoDB Atlas: https://cloud.mongodb.com/');
+      console.error('2. Navigate to: Network Access → Add IP Address');
+      console.error('3. Click "Add Current IP Address" or add 0.0.0.0/0 (allows all IPs - less secure)');
+      console.error('4. Wait 1-2 minutes for changes to propagate');
+      console.error('5. Restart your application\n');
+    }
+    
     console.error('Full error:', err);
   });
 
