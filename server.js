@@ -54,6 +54,10 @@ app.get('/services', (req, res) => {
   res.render('pages/services', { page: 'services' });
 });
 
+app.get('/about', (req, res) => {
+  res.render('pages/about', { page: 'about' });
+});
+
 app.get('/contact', (req, res) => {
   const selectedService = req.query.service || '';
   res.render('pages/contact', { page: 'contact', success: null, error: null, selectedService });
