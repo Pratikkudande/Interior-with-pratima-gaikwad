@@ -4,28 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= siteTitle %> | <%= pageTitle || '' %></title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" href="/img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="/css/styles.css?v=whatsapp-fab-5" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="logo">
-          <img src="/img/logo.png" alt="Interior with Pratima Gaikwad logo" />
-          <div class="logo-text">
-            <span class="logo-main"><span class="logo-accent">Interior</span> with Pratima Gaikwad</span>
-            <!-- <span class="logo-sub">with Pratima Gaikwad</span> -->
+
+    <%- include('whatsapp-fab') %>
+    <script src="/js/whatsapp-fab.js"></script>
+
+    <header class="site-header" id="siteHeader">
+      <div class="header-inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo" aria-label="Interior with Pratima Gaikwad – Home">
+          <div class="logo-img-wrap">
+            <img src="/img/logo.png" alt="Logo" />
           </div>
-        </div>
-        <nav class="nav">
-          <a href="/" class="<%= page === 'home' ? 'active' : '' %>">Home</a>
-          <a href="/about" class="<%= page === 'about' ? 'active' : '' %>">About</a>
-          <a href="/services" class="<%= page === 'services' ? 'active' : '' %>">Services</a>
-          <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact</a>
+          <div class="logo-divider"></div>
+          <div class="logo-text">
+            <span class="logo-name">
+              <span class="logo-accent">Interior</span> with Pratima Gaikwad
+            </span>
+            <span class="logo-tagline">Interior Design Studio</span>
+          </div>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav" id="mainNav" aria-label="Main navigation">
+          <a href="/" class="nav-link <%= page === 'home' ? 'active' : '' %>">Home</a>
+          <a href="/about" class="nav-link <%= page === 'about' ? 'active' : '' %>">About</a>
+          <a href="/services" class="nav-link <%= page === 'services' ? 'active' : '' %>">Services</a>
+          <a href="/contact" class="nav-cta <%= page === 'contact' ? 'active' : '' %>">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            Book a Call
+          </a>
         </nav>
+
+        <!-- Hamburger -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
       </div>
     </header>
+
     <main class="site-main">
-      <div class="container">
-
-
-

@@ -1,83 +1,94 @@
 <%- include('../partials/header', { pageTitle: 'About the Owner' }) %>
 
-<section class="about-header">
-  <h1>About the Owner</h1>
+<%# ── PAGE HERO ── %>
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="page-hero-eyebrow reveal">About</p>
+    <h1 class="reveal reveal-delay-1">The Designer Behind the Work</h1>
+    <p class="page-hero-sub reveal reveal-delay-2">Pune-based interior designer crafting warm, modern spaces that feel personal and timeless.</p>
+  </div>
 </section>
 
-<section class="about-content">
-  <div class="about-main">
-    <div class="about-text">
-      <div class="about-title">
-        <h2>Pratima Gaikwad</h2>
-        <p class="about-role">Founder & Principle Designer – Interior with Pratima Gaikwad</p>
-      </div>
-      
-      <div class="about-description">
-        <p>
+<%# ── BIO ── %>
+<section class="about-bio-section">
+  <div class="section-inner">
+    <div class="about-main">
+      <div class="about-text reveal">
+        <div class="about-title">
+          <h2>Pratima Gaikwad</h2>
+          <p class="about-role">Founder &amp; Principal Designer – Interior with Pratima Gaikwad</p>
+        </div>
+        <div class="about-description">
+          <p>
             Pratima is a Pune-based interior designer with 3+ years of experience and 30+ completed projects. She specialises in warm, modern interiors that feel welcoming, balanced and easy to maintain. Her work reflects a blend of aesthetics, functionality and the unique personality of each homeowner.
-        </p>
-        <p>
+          </p>
+          <p>
             Her design style focuses on simple layouts, natural colours and smart storage solutions. She believes that every home should be beautiful without being cluttered, and that even small spaces can feel open and comfortable with the right planning and material choices.
-        </p>
-        <p>
-            Pratima has worked on Residential, Commercial and Industrial projects across Pune and nearby areas. She has a strong interest in transforming compact spaces into practical and elegant homes, ensuring that each design supports everyday  living while looking timeless and stylish.
-        </p>
-        <blockquote class="about-quote">
-          "A home should feel peaceful, personal and easy to maintain."
-        </blockquote>
+          </p>
+          <p>
+            Pratima has worked on Residential, Commercial and Industrial projects across Pune and nearby areas. She has a strong interest in transforming compact spaces into practical and elegant homes, ensuring that each design supports everyday living while looking timeless and stylish.
+          </p>
+          <blockquote class="about-quote">
+            "A home should feel peaceful, personal and easy to maintain."
+          </blockquote>
+        </div>
       </div>
-    </div>
-    
-    <div class="about-image-wrapper">
-      <img src="/img/pratima.jpeg" alt="Pratima Gaikwad - Interior Designer" class="about-image" />
-    </div>
-  </div>
-</section>
-
-<section class="about-contact">
-  <h2>Contact</h2>
-  <p class="about-contact-intro">If you'd like to discuss your home:</p>
-  <div class="contact-details">
-    <div class="contact-item">
-      <span class="contact-icon">📞</span>
-      <div>
-        <strong>Call / WhatsApp:</strong>
-        <a href="tel:+919552185151">+91 95521 85151</a>
-      </div>
-    </div>
-    <div class="contact-item">
-      <span class="contact-icon">📧</span>
-      <div>
-        <strong>Email:</strong>
-        <a href="mailto:interiorwithpratima@gmail.com">interiorwithpratima@gmail.com</a>
-      </div>
-    </div>
-    <div class="contact-item">
-      <span class="contact-icon">📸</span>
-      <div>
-        <strong>Instagram:</strong>
-        <a href="https://www.instagram.com/interior_with_pratima_gaikwad" target="_blank" rel="noreferrer">@interior_with_pratima_gaikwad</a>
-      </div>
-    </div>
-    <div class="contact-item">
-      <span class="contact-icon">🌐</span>
-      <div>
-        <strong>Website:</strong>
-        <a href="https://interior-with-pratima-gaikwad.onrender.com" target="_blank" rel="noreferrer">interior-with-pratima-gaikwad.onrender.com</a>
+      <div class="about-image-wrapper reveal reveal-delay-2">
+        <img src="/img/pratima.jpeg" alt="Pratima Gaikwad - Interior Designer" class="about-image" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
 
-<section class="about-location">
-  <h2>Location</h2>
-  <p class="location-intro">Based in Pune, available for projects across:</p>
-  <div class="location-list">
-    <span class="location-tag">Pune</span>
-    <span class="location-tag">Shrigonda</span>
-    <span class="location-tag">Nearby areas</span>
+<%# ── CONTACT DETAILS ── %>
+<section class="about-contact-section">
+  <div class="section-inner">
+    <h2 class="reveal">Get in Touch</h2>
+    <p class="section-sub reveal reveal-delay-1">If you'd like to discuss your home or project:</p>
+    <div class="contact-details">
+      <div class="contact-item reveal reveal-delay-1">
+        <span class="contact-icon">📞</span>
+        <div>
+          <strong>Call / WhatsApp</strong>
+          <a href="tel:+919552185151">+91 95521 85151</a>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-2">
+        <span class="contact-icon">📧</span>
+        <div>
+          <strong>Email</strong>
+          <a href="mailto:interiorwithpratima@gmail.com">interiorwithpratima@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-3">
+        <span class="contact-icon">📸</span>
+        <div>
+          <strong>Instagram</strong>
+          <a href="https://www.instagram.com/interior_with_pratima_gaikwad" target="_blank" rel="noreferrer">@interior_with_pratima_gaikwad</a>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-4">
+        <span class="contact-icon">🌐</span>
+        <div>
+          <strong>Website</strong>
+          <a href="https://interior-with-pratima-gaikwad.onrender.com" target="_blank" rel="noreferrer">interior-with-pratima-gaikwad.onrender.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ── LOCATION ── %>
+<section class="about-location-section">
+  <div class="section-inner">
+    <h2 class="reveal">Location</h2>
+    <p class="section-sub reveal reveal-delay-1">Based in Pune, available for projects across:</p>
+    <div class="location-list reveal reveal-delay-2">
+      <span class="location-tag">Pune</span>
+      <span class="location-tag">Shrigonda</span>
+      <span class="location-tag">Nearby areas</span>
+    </div>
   </div>
 </section>
 
 <%- include('../partials/footer') %>
-

@@ -1,61 +1,94 @@
 <%- include('../partials/header', { pageTitle: 'Services' }) %>
 
-<section class="page-header services-header">
-  <h1>Services</h1>
-  <p>Three core offerings to cover everything from concept to completion.</p>
+<%# ── PAGE HERO ── %>
+<section class="page-hero">
+  <div class="section-inner">
+    <p class="page-hero-eyebrow reveal">What we offer</p>
+    <h1 class="reveal reveal-delay-1">Services</h1>
+    <p class="page-hero-sub reveal reveal-delay-2">Three core offerings to cover everything from concept to completion.</p>
+  </div>
 </section>
 
-<section class="services-list">
-  <article class="service-card" data-service="interior-design">
-    <h2>Interior Design</h2>
-    <p>Complete design for residential and small commercial spaces.</p>
-    <ul>
-      <li>Concept & theme development</li>
-      <li>Furniture & layout planning</li>
-      <li>3D visualizations & moodboards</li>
-      <li>Material, fabric & color selection</li>
-    </ul>
-    <button class="btn tertiary js-service-enquire" data-service="Interior Design">
-      Enquire about Interior Design
-    </button>
-  </article>
+<%# ── SERVICE CARDS ── %>
+<section class="services-cards-section">
+  <div class="section-inner">
+    <div class="services-list">
 
-  <article class="service-card" data-service="home-architecture">
-    <h2>Home Architecture</h2>
-    <p>Planning and design for new homes, extensions and major renovations.</p>
-    <ul>
-      <li>Concept elevation & massing</li>
-      <li>Floor plans and sections</li>
-      <li>Vastu-compliant layouts (on request)</li>
-      <li>Coordination with structural & services drawings</li>
-    </ul>
-    <button class="btn tertiary js-service-enquire" data-service="Home Architecture">
-      Enquire about Home Architecture
-    </button>
-  </article>
+      <article class="service-card reveal reveal-delay-1" data-service="interior-design">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2" />
+            <path d="M12 2v3.2M12 18.8V22M4.6 4.6 7 7M17 17l2.4 2.4M2 12h3.2M18.8 12H22M4.6 19.4 7 17M17 7l2.4-2.4" />
+          </svg>
+        </div>
+        <h2>Interior Design</h2>
+        <p>Complete design for residential and small commercial spaces.</p>
+        <ul>
+          <li>Concept &amp; theme development</li>
+          <li>Furniture &amp; layout planning</li>
+          <li>3D visualizations &amp; moodboards</li>
+          <li>Material, fabric &amp; color selection</li>
+        </ul>
+        <button class="btn secondary js-service-enquire" data-service="Interior Design">
+          Enquire about Interior Design
+        </button>
+      </article>
 
-  <article class="service-card" data-service="home-plan">
-    <h2>Home Plan</h2>
-    <p>Smart planning and detailing for existing homes and apartments.</p>
-    <ul>
-      <li>Space optimization & zoning</li>
-      <li>Furniture and storage layouts</li>
-      <li>Lighting & ceiling plans</li>
-      <li>On-site review and recommendations</li>
-    </ul>
-    <button class="btn tertiary js-service-enquire" data-service="Home Plan">
-      Enquire about Home Plan
-    </button>
-  </article>
+      <article class="service-card reveal reveal-delay-2" data-service="home-architecture">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="m9 15 2.6-5.2L16.8 9 14 14.2 9 15Z" />
+            <circle cx="12" cy="12" r="0.8" fill="currentColor" />
+          </svg>
+        </div>
+        <h2>Home Architecture</h2>
+        <p>Planning and design for new homes, extensions and major renovations.</p>
+        <ul>
+          <li>Concept elevation &amp; massing</li>
+          <li>Floor plans and sections</li>
+          <li>Vastu-compliant layouts (on request)</li>
+          <li>Coordination with structural &amp; services drawings</li>
+        </ul>
+        <button class="btn secondary js-service-enquire" data-service="Home Architecture">
+          Enquire about Home Architecture
+        </button>
+      </article>
+
+      <article class="service-card reveal reveal-delay-3" data-service="home-plan">
+        <div class="service-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M4 11.5 12 5l8 6.5" />
+            <path d="M6.5 10.5v8h11v-8" />
+            <path d="M10 18v-4h4v4" />
+          </svg>
+        </div>
+        <h2>Home Plan</h2>
+        <p>Smart planning and detailing for existing homes and apartments.</p>
+        <ul>
+          <li>Space optimization &amp; zoning</li>
+          <li>Furniture and storage layouts</li>
+          <li>Lighting &amp; ceiling plans</li>
+          <li>On-site review and recommendations</li>
+        </ul>
+        <button class="btn secondary js-service-enquire" data-service="Home Plan">
+          Enquire about Home Plan
+        </button>
+      </article>
+
+    </div>
+  </div>
 </section>
 
-<section class="subtle-cta">
-  <h2>Not sure which service fits you?</h2>
-  <p>Book a quick discovery call and we’ll guide you to the right option.</p>
-  <a href="/contact" class="btn secondary">Talk to Pratima</a>
+<%# ── BOTTOM CTA ── %>
+<section class="cta-strip reveal">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2>Not sure which service fits you?</h2>
+      <p>Book a quick discovery call and we'll guide you to the right option.</p>
+    </div>
+    <a href="/contact" class="btn secondary">Talk to Pratima</a>
+  </div>
 </section>
 
 <%- include('../partials/footer') %>
-
-
-

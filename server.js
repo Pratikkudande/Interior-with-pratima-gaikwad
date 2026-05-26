@@ -42,6 +42,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'img', 'logo.png'));
+});
+
 // Basic locals
 app.locals.siteTitle = 'Interior with Pratima Gaikwad';
 

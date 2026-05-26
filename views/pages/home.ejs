@@ -1,5 +1,6 @@
 <%- include('../partials/header', { pageTitle: 'Timeless Interiors Crafted for You' }) %>
 
+<%# ── HERO ── full-bleed, content constrained inside %>
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-copy">
@@ -12,178 +13,207 @@
         <a href="/contact" class="btn primary">Book a Consultation</a>
         <a href="/services" class="btn ghost">Explore Services</a>
       </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="stat-value"><span class="stat-number" data-target="30">0</span><span class="stat-suffix">+</span></div>
+          <span class="stat-label" data-short="Projects">Projects</span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-value"><span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span></div>
+          <span class="stat-label" data-short="Exp">Years Experience</span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-value"><span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span></div>
+          <span class="stat-label" data-short="Satisfied">Client Satisfaction</span>
+        </div>
+      </div>
     </div>
     <div class="hero-image">
       <img
         src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80"
         alt="Styled chair and decor vignette"
+        loading="eager"
       />
     </div>
   </div>
 </section>
 
+<%# ── SERVICES ── %>
 <section class="services-horizon">
-  <h2>Our Dynamic Services Horizon</h2>
-  <p class="services-intro">Explore our comprehensive range of services, meticulously crafted to bring your architectural and design visions to life. Each solution is a testament to our expertise and commitment to excellence.</p>
-  <div class="services-list-vertical">
-    <article class="service-item">
-      <div class="service-number">01</div>
-      <div class="service-icon service-icon-sun">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="12" r="4.2" />
-          <path d="M12 2v3.2M12 18.8V22M4.6 4.6 7 7M17 17l2.4 2.4M2 12h3.2M18.8 12H22M4.6 19.4 7 17M17 7l2.4-2.4" />
-        </svg>
-      </div>
-      <h3>Interior Design</h3>
-    </article>
-    <article class="service-item">
-      <div class="service-number">02</div>
-      <div class="service-icon service-icon-compass">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="12" r="9" />
-          <path d="m9 15 2.6-5.2L16.8 9 14 14.2 9 15Z" />
-          <circle cx="12" cy="12" r="0.8" />
-        </svg>
-      </div>
-      <h3>Architectural Planning</h3>
-    </article>
-    <article class="service-item">
-      <div class="service-number">03</div>
-      <div class="service-icon service-icon-tools">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="m14.5 6.5 3 3L11 16l-3.5.5.5-3.5 6.5-6.5Z" />
-          <path d="m12.5 5.5 1.8-1.8a3.5 3.5 0 0 1 4.9 4.9L17.4 10" />
-          <path d="m6.5 17.5 2 2" />
-        </svg>
-      </div>
-      <h3>Construction Management</h3>
-    </article>
-    <article class="service-item">
-      <div class="service-number">04</div>
-      <div class="service-icon service-icon-house">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M4 11.5 12 5l8 6.5" />
-          <path d="M6.5 10.5v8h11v-8" />
-          <path d="M10 18v-4h4v4" />
-        </svg>
-      </div>
-      <h3>Landscape Design</h3>
-    </article>
-    <article class="service-item">
-      <div class="service-number">05</div>
-      <div class="service-icon service-icon-bulb">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M9 18h6" />
-          <path d="M10 21h4" />
-          <path d="M8.5 9a3.5 3.5 0 1 1 7 0c0 1.4-.6 2.4-1.5 3.4-.6.7-.9 1.1-1 2.1h-2c-.1-1-.4-1.4-1-2.1C9.1 11.4 8.5 10.4 8.5 9Z" />
-        </svg>
-      </div>
-      <h3>Smart Home Integration</h3>
-    </article>
-    <article class="service-item">
-      <div class="service-number">06</div>
-      <div class="service-icon service-icon-vastu">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="12" r="7.5" />
-          <path d="M12 6v12M6 12h12" />
-          <path d="M8.5 8.5 12 12l3.5-3.5M8.5 15.5 12 12l3.5 3.5" />
-        </svg>
-      </div>
-      <h3>Vastu Consultation</h3>
-    </article>
+  <div class="section-inner">
+    <h2 class="reveal">Our Dynamic Services Horizon</h2>
+    <p class="services-intro reveal reveal-delay-1">Explore our comprehensive range of services, meticulously crafted to bring your architectural and design visions to life. Each solution is a testament to our expertise and commitment to excellence.</p>
+    <div class="services-list-vertical">
+      <article class="service-item reveal reveal-delay-1">
+        <div class="service-number">01</div>
+        <div class="service-icon service-icon-sun">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.2" />
+            <path d="M12 2v3.2M12 18.8V22M4.6 4.6 7 7M17 17l2.4 2.4M2 12h3.2M18.8 12H22M4.6 19.4 7 17M17 7l2.4-2.4" />
+          </svg>
+        </div>
+        <h3>Interior Design</h3>
+      </article>
+      <article class="service-item reveal reveal-delay-2">
+        <div class="service-number">02</div>
+        <div class="service-icon service-icon-compass">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9" />
+            <path d="m9 15 2.6-5.2L16.8 9 14 14.2 9 15Z" />
+            <circle cx="12" cy="12" r="0.8" />
+          </svg>
+        </div>
+        <h3>Architectural Planning</h3>
+      </article>
+      <article class="service-item reveal reveal-delay-3">
+        <div class="service-number">03</div>
+        <div class="service-icon service-icon-tools">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m14.5 6.5 3 3L11 16l-3.5.5.5-3.5 6.5-6.5Z" />
+            <path d="m12.5 5.5 1.8-1.8a3.5 3.5 0 0 1 4.9 4.9L17.4 10" />
+            <path d="m6.5 17.5 2 2" />
+          </svg>
+        </div>
+        <h3>Construction Management</h3>
+      </article>
+      <article class="service-item reveal reveal-delay-1">
+        <div class="service-number">04</div>
+        <div class="service-icon service-icon-house">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 11.5 12 5l8 6.5" />
+            <path d="M6.5 10.5v8h11v-8" />
+            <path d="M10 18v-4h4v4" />
+          </svg>
+        </div>
+        <h3>Landscape Design</h3>
+      </article>
+      <article class="service-item reveal reveal-delay-2">
+        <div class="service-number">05</div>
+        <div class="service-icon service-icon-bulb">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9 18h6" />
+            <path d="M10 21h4" />
+            <path d="M8.5 9a3.5 3.5 0 1 1 7 0c0 1.4-.6 2.4-1.5 3.4-.6.7-.9 1.1-1 2.1h-2c-.1-1-.4-1.4-1-2.1C9.1 11.4 8.5 10.4 8.5 9Z" />
+          </svg>
+        </div>
+        <h3>Smart Home Integration</h3>
+      </article>
+      <article class="service-item reveal reveal-delay-3">
+        <div class="service-number">06</div>
+        <div class="service-icon service-icon-vastu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="7.5" />
+            <path d="M12 6v12M6 12h12" />
+            <path d="M8.5 8.5 12 12l3.5-3.5M8.5 15.5 12 12l3.5 3.5" />
+          </svg>
+        </div>
+        <h3>Vastu Consultation</h3>
+      </article>
+    </div>
   </div>
 </section>
 
+<%# ── PROCESS ── %>
 <section class="process-horizon">
-  <h2>How we work</h2>
-  <p class="process-intro">Our streamlined process ensures your vision comes to life with precision and care. From initial consultation to final implementation, we guide you through every step.</p>
-  <div class="process-list-horizontal">
-    <article class="process-item">
-      <div class="process-number">01</div>
-      <div class="process-icon process-icon-phone">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M16.8 16.8c-1.6 1.6-6.6-3.4-8.2-5s-6.6-6.6-5-8.2l2.2-2.2 3.2 3.2-2 2 4 4 2-2 3.2 3.2-2.2 2.2Z" />
-        </svg>
-      </div>
-      <h3>Discovery Call</h3>
-      <p>Understand your space, budget and style</p>
-    </article>
-    <article class="process-item">
-      <div class="process-number">02</div>
-      <div class="process-icon process-icon-design">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M12 20c-2.5 0-5-1.8-5-4.5C7 12.6 9.6 10 12.8 10c1.8 0 3.2 1.2 3.2 2.6 0 1-1 1.8-2 1.8-.8 0-1.2-.4-1.2-1 0-.5.4-.9.8-.9" />
-          <path d="M14 4c0 2.2-1.8 4-4 4-.6 0-1.2-.2-1.6-.4C7.8 6.8 7 5.5 7 4c0-2.2 1.8-4 4-4s3 1.8 3 4Z" />
-        </svg>
-      </div>
-      <h3>Concept & Layout</h3>
-      <p>Moodboards and rough estimates</p>
-    </article>
-    <article class="process-item">
-      <div class="process-number">03</div>
-      <div class="process-icon process-icon-drawing">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M4 18 18 4l2 2L6 20H4v-2Z" />
-          <path d="m15 7 2 2" />
-          <path d="M9 17v-2l6-6 2 2-6 6H9Z" />
-        </svg>
-      </div>
-      <h3>Detailed Design</h3>
-      <p>Drawings and selections for execution</p>
-    </article>
-    <article class="process-item">
-      <div class="process-number">04</div>
-      <div class="process-icon process-icon-coordination">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M4 18h16" />
-          <path d="M6 18v-6l6-6 6 6v6" />
-          <path d="M10 18v-4h4v4" />
-          <path d="M12 6V3" />
-          <path d="M9 3h6" />
-        </svg>
-      </div>
-      <h3>On-site Coordination</h3>
-      <p>Support during implementation</p>
-    </article>
+  <div class="section-inner">
+    <h2 class="reveal">How we work</h2>
+    <p class="process-intro reveal reveal-delay-1">Our streamlined process ensures your vision comes to life with precision and care. From initial consultation to final implementation, we guide you through every step.</p>
+    <div class="process-list-horizontal">
+      <article class="process-item reveal reveal-delay-1">
+        <div class="process-number">01</div>
+        <div class="process-icon process-icon-phone">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M16.8 16.8c-1.6 1.6-6.6-3.4-8.2-5s-6.6-6.6-5-8.2l2.2-2.2 3.2 3.2-2 2 4 4 2-2 3.2 3.2-2.2 2.2Z" />
+          </svg>
+        </div>
+        <h3>Discovery Call</h3>
+        <p>Understand your space, budget and style</p>
+      </article>
+      <article class="process-item reveal reveal-delay-2">
+        <div class="process-number">02</div>
+        <div class="process-icon process-icon-design">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 20c-2.5 0-5-1.8-5-4.5C7 12.6 9.6 10 12.8 10c1.8 0 3.2 1.2 3.2 2.6 0 1-1 1.8-2 1.8-.8 0-1.2-.4-1.2-1 0-.5.4-.9.8-.9" />
+            <path d="M14 4c0 2.2-1.8 4-4 4-.6 0-1.2-.2-1.6-.4C7.8 6.8 7 5.5 7 4c0-2.2 1.8-4 4-4s3 1.8 3 4Z" />
+          </svg>
+        </div>
+        <h3>Concept & Layout</h3>
+        <p>Moodboards and rough estimates</p>
+      </article>
+      <article class="process-item reveal reveal-delay-3">
+        <div class="process-number">03</div>
+        <div class="process-icon process-icon-drawing">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 18 18 4l2 2L6 20H4v-2Z" />
+            <path d="m15 7 2 2" />
+            <path d="M9 17v-2l6-6 2 2-6 6H9Z" />
+          </svg>
+        </div>
+        <h3>Detailed Design</h3>
+        <p>Drawings and selections for execution</p>
+      </article>
+      <article class="process-item reveal reveal-delay-4">
+        <div class="process-number">04</div>
+        <div class="process-icon process-icon-coordination">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 18h16" />
+            <path d="M6 18v-6l6-6 6 6v6" />
+            <path d="M10 18v-4h4v4" />
+            <path d="M12 6V3" />
+            <path d="M9 3h6" />
+          </svg>
+        </div>
+        <h3>On-site Coordination</h3>
+        <p>Support during implementation</p>
+      </article>
+    </div>
   </div>
 </section>
 
+<%# ── GALLERY ── %>
 <section class="projects-gallery">
-  <h2>Signature transformations</h2>
-  <p class="projects-intro">A glimpse of previous projects – apartment makeovers, hospitality lounges and boutique retail spaces.</p>
-  <div class="projects-header">
-    <a href="https://www.instagram.com/interior_with_pratima_gaikwad" target="_blank" rel="noreferrer" class="btn secondary">
-      Explore Instagram Portfolio
-    </a>
-  </div>
-  <div class="projects-scroll">
-    <figure class="project-image-card" style="background-image: url('https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1200&q=80');">
-      <!-- <figcaption>Warm, panelled master bedroom with layered lighting</figcaption> -->
-    </figure>
-    <figure class="project-image-card" style="background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80');">
-      <!-- <figcaption>Soft blue bedroom with calm styling</figcaption> -->
-    </figure>
-    <figure class="project-image-card" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80');">
-      <!-- <figcaption>Master suite with vanity & warm lighting</figcaption> -->
-    </figure>
-    <figure class="project-image-card" style="background-image: url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80');">
-      <!-- <figcaption>Wardrobe-focused bedroom with rich textures</figcaption> -->
-    </figure>
-    <figure class="project-image-card" style="background-image: url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80');">
-      <!-- <figcaption>Minimal, bright bedroom with neutral palette</figcaption> -->
-    </figure>
+  <div class="section-inner">
+    <h2 class="reveal">Signature transformations</h2>
+    <p class="projects-intro reveal reveal-delay-1">A glimpse of previous projects – apartment makeovers, hospitality lounges and boutique retail spaces.</p>
+    <div class="projects-header reveal reveal-delay-2">
+      <a href="https://www.instagram.com/interior_with_pratima_gaikwad" target="_blank" rel="noreferrer" class="btn secondary">
+        Explore Instagram Portfolio
+      </a>
+    </div>
+    <div class="slideshow reveal" id="projectsSlideshow">
+      <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1400&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1400&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1400&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1400&q=80');"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-captions">
+        <p class="slide-caption active">Warm, panelled master bedroom with layered lighting</p>
+        <p class="slide-caption">Soft blue bedroom with calm styling</p>
+        <p class="slide-caption">Master suite with vanity &amp; warm lighting</p>
+        <p class="slide-caption">Wardrobe-focused bedroom with rich textures</p>
+        <p class="slide-caption">Minimal, bright bedroom with neutral palette</p>
+      </div>
+      <button class="slide-arrow slide-prev" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="slide-arrow slide-next" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
   </div>
 </section>
 
-<section class="cta-strip">
+<%# ── CTA ── %>
+<section class="cta-strip reveal">
   <div class="cta-inner">
-    <h2>Ready to transform your space?</h2>
-    <p>Share a few details and we’ll get back within 24 hours with next steps.</p>
+    <div class="cta-text">
+      <h2>Ready to transform your space?</h2>
+      <p>Share a few details and we'll get back within 24 hours with next steps.</p>
+    </div>
     <a href="/contact" class="btn secondary">Enquire Now</a>
   </div>
 </section>
 
 <%- include('../partials/footer') %>
-
-
-
