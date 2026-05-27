@@ -2,10 +2,90 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 const Inquiry = require('./models/Inquiry');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// ─── EMAIL TRANSPORTER ───────────────────────────────────────
+const emailConfigured = !!(process.env.EMAIL_USER && process.env.EMAIL_PASS);
+
+if (!emailConfigured) {
+  console.warn('⚠️  Email not configured — set EMAIL_USER and EMAIL_PASS in environment variables.');
+  console.warn('   On Render: Dashboard → Your Service → Environment → Add variables');
+} else {
+  console.log(`✓ Email configured for: ${process.env.EMAIL_USER}`);
+}
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+async function sendEnquiryEmail(inquiry) {
+  const { name, email, phone, city, service, message } = inquiry;
+
+  // Email to Pratima (notification)
+  const toOwner = {
+    from: `"Interior with Pratima" <${process.env.EMAIL_USER}>`,
+    to: process.env.EMAIL_TO,
+    subject: `New Enquiry from ${name}`,
+    html: `
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0f1014;color:#f5f5f7;padding:32px;border-radius:12px;">
+        <h2 style="color:#e9b872;margin-top:0;">New Enquiry Received</h2>
+        <table style="width:100%;border-collapse:collapse;">
+          <tr><td style="padding:8px 0;color:#a3a7b5;width:140px;">Name</td><td style="padding:8px 0;font-weight:600;">${name}</td></tr>
+          <tr><td style="padding:8px 0;color:#a3a7b5;">Email</td><td style="padding:8px 0;"><a href="mailto:${email}" style="color:#e9b872;">${email}</a></td></tr>
+          <tr><td style="padding:8px 0;color:#a3a7b5;">Phone</td><td style="padding:8px 0;"><a href="tel:${phone}" style="color:#e9b872;">${phone}</a></td></tr>
+          <tr><td style="padding:8px 0;color:#a3a7b5;">City</td><td style="padding:8px 0;">${city || '—'}</td></tr>
+          <tr><td style="padding:8px 0;color:#a3a7b5;">Service</td><td style="padding:8px 0;">${service || '—'}</td></tr>
+          <tr><td style="padding:8px 0;color:#a3a7b5;vertical-align:top;">Message</td><td style="padding:8px 0;">${message || '—'}</td></tr>
+        </table>
+        <hr style="border:none;border-top:1px solid #262833;margin:24px 0;">
+        <p style="color:#a3a7b5;font-size:12px;margin:0;">Sent from your website contact form</p>
+      </div>
+    `,
+  };
+
+  // Confirmation email to the user
+  const toUser = {
+    from: `"Pratima Gaikwad – Interior Design" <${process.env.EMAIL_USER}>`,
+    to: email,
+    subject: `We received your enquiry, ${name.split(' ')[0]}!`,
+    html: `
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0f1014;color:#f5f5f7;padding:32px;border-radius:12px;">
+        <h2 style="color:#e9b872;margin-top:0;">Thank you for reaching out!</h2>
+        <p style="color:#a3a7b5;line-height:1.7;">Hi ${name.split(' ')[0]},</p>
+        <p style="color:#a3a7b5;line-height:1.7;">
+          We've received your enquiry about <strong style="color:#f5f5f7;">${service || 'our services'}</strong> and will get back to you within <strong style="color:#f5f5f7;">one working day</strong>.
+        </p>
+        <div style="background:#181a20;border-radius:8px;padding:20px;margin:24px 0;border-left:3px solid #e9b872;">
+          <p style="margin:0 0 8px;color:#a3a7b5;font-size:13px;">YOUR ENQUIRY DETAILS</p>
+          <p style="margin:4px 0;font-size:14px;"><span style="color:#a3a7b5;">Service:</span> ${service || '—'}</p>
+          <p style="margin:4px 0;font-size:14px;"><span style="color:#a3a7b5;">Phone:</span> ${phone}</p>
+          ${city ? `<p style="margin:4px 0;font-size:14px;"><span style="color:#a3a7b5;">City:</span> ${city}</p>` : ''}
+        </div>
+        <p style="color:#a3a7b5;line-height:1.7;">
+          In the meantime, feel free to explore our work on 
+          <a href="https://www.instagram.com/interior_with_pratima_gaikwad" style="color:#e9b872;">Instagram</a> 
+          or WhatsApp us directly at 
+          <a href="https://wa.me/919552185151" style="color:#e9b872;">+91 95521 85151</a>.
+        </p>
+        <p style="color:#a3a7b5;margin-bottom:0;">Warm regards,<br><strong style="color:#f5f5f7;">Pratima Gaikwad</strong><br><span style="font-size:13px;">Interior with Pratima Gaikwad · Pune</span></p>
+      </div>
+    `,
+  };
+
+  // Send both in parallel — don't await so it doesn't block the response
+  await Promise.all([
+    transporter.sendMail(toOwner),
+    transporter.sendMail(toUser),
+  ]);
+}
 
 // Connect to MongoDB
 const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/interior_with_pratima';
@@ -106,6 +186,23 @@ app.post('/contact', async (req, res) => {
     });
 
     console.log('✓ Inquiry saved successfully:', inquiry._id);
+
+    // Send email notification (non-blocking — don't fail the request if email fails)
+    if (emailConfigured) {
+      sendEnquiryEmail({
+        name: inquiry.name,
+        email: inquiry.email,
+        phone: inquiry.phone,
+        city: inquiry.city,
+        service: inquiry.service,
+        message: inquiry.message,
+      }).then(() => {
+        console.log('✓ Enquiry emails sent');
+      }).catch((emailErr) => {
+        console.error('✗ Email send failed (inquiry still saved):', emailErr.message);
+      });
+    }
+
     res.render('pages/contact', {
       page: 'contact',
       success: 'Thank you! Your enquiry has been received. We will get back to you soon.',
