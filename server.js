@@ -128,6 +128,10 @@ app.get('/services', (req, res) => {
   res.render('pages/services', { page: 'services' });
 });
 
+app.get('/projects', (req, res) => {
+  res.render('pages/projects', { page: 'projects' });
+});
+
 app.get('/about', (req, res) => {
   res.render('pages/about', { page: 'about' });
 });

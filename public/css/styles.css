@@ -1897,6 +1897,143 @@ a {
   opacity: 0.6;
 }
 
+/* ── PROJECTS PAGE ── */
+.projects-page-section {
+  padding: 72px 48px 80px;
+  background:
+    radial-gradient(ellipse 60% 80% at 0% 50%, rgba(233, 184, 114, 0.05) 0%, transparent 60%),
+    rgba(14, 15, 22, 0.99);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.proj-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: default;
+}
+
+.proj-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0a0b10;
+}
+
+.proj-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.proj-card:hover .proj-img-wrap img {
+  transform: scale(1.05);
+}
+
+/* overlay on hover */
+.proj-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 9, 0);
+  transition: background 0.35s ease;
+  pointer-events: none;
+}
+
+.proj-card:hover .proj-img-wrap::after {
+  background: rgba(5, 5, 9, 0.25);
+}
+
+/* service type tag */
+.proj-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a0e04;
+  background: linear-gradient(135deg, #f0c27b, #d67a3d);
+  padding: 4px 10px;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+/* text below image */
+.proj-info {
+  padding: 14px 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.proj-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.2;
+  transition: color 0.2s ease;
+}
+
+.proj-card:hover .proj-name {
+  color: var(--accent);
+}
+
+.proj-client {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* instagram CTA below grid */
+.proj-instagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+}
+
+.proj-instagram p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.proj-instagram .btn.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .proj-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
+@media (max-width: 560px) {
+  .proj-grid { grid-template-columns: 1fr; gap: 24px; }
+  .projects-page-section { padding: 44px 16px 52px; }
+}
+
 /* ── 404 PAGE ── */
 .not-found-section {
   padding: 80px 48px;
