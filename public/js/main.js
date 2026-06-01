@@ -1,5 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ─── HERO 3D TILT PARALLAX ──────────────────────────────
+  const tiltWrap = document.getElementById('heroTilt');
+  if (tiltWrap) {
+    const inner = tiltWrap.querySelector('.ht-inner');
+    const glare = tiltWrap.querySelector('.ht-glare');
+    const badge = tiltWrap.querySelector('.ht-badge');
+    const MAX_TILT  = 10;   // max degrees
+    const MAX_GLARE = 0.18; // max glare opacity
+
+    tiltWrap.addEventListener('mousemove', (e) => {
+      const rect   = tiltWrap.getBoundingClientRect();
+      // normalise -1 to +1
+      const xRatio = (e.clientX - rect.left)  / rect.width  - 0.5;
+      const yRatio = (e.clientY - rect.top)   / rect.height - 0.5;
+
+      const rotateY =  xRatio * MAX_TILT * 2;
+      const rotateX = -yRatio * MAX_TILT * 2;
+
+      inner.style.transform =
+        `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
+
+      // move glare to follow cursor
+      const glareX = (xRatio + 0.5) * 100;
+      const glareY = (yRatio + 0.5) * 100;
+      glare.style.background = `radial-gradient(
+        circle at ${glareX}% ${glareY}%,
+        rgba(255,255,255,${MAX_GLARE}) 0%,
+        transparent 60%
+      )`;
+
+      // badge floats opposite direction for parallax depth
+      if (badge) {
+        badge.style.transform =
+          `translateZ(30px) translate(${-xRatio * 8}px, ${-yRatio * 8}px)`;
+      }
+
+      // dynamic shadow follows tilt
+      inner.style.boxShadow = `
+        ${-rotateY * 2}px ${rotateX * 2}px 56px rgba(0,0,0,0.65),
+        0 0 0 1px rgba(233,184,114,0.2)
+      `;
+    });
+
+    tiltWrap.addEventListener('mouseleave', () => {
+      inner.classList.add('resetting');
+      inner.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+      inner.style.boxShadow = '';
+      glare.style.background = '';
+      if (badge) badge.style.transform = 'translateZ(30px)';
+      setTimeout(() => inner.classList.remove('resetting'), 650);
+    });
+
+    // gyroscope for mobile
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (e) => {
+        if (!e.beta || !e.gamma) return;
+        const rotateX = Math.max(-MAX_TILT, Math.min(MAX_TILT, e.beta  * 0.3));
+        const rotateY = Math.max(-MAX_TILT, Math.min(MAX_TILT, e.gamma * 0.3));
+        inner.style.transform =
+          `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }, { passive: true });
+    }
+  }
+
   // ─── HEADER SCROLL STATE ─────────────────────────────────
   const siteHeader = document.getElementById('siteHeader');
   if (siteHeader) {
